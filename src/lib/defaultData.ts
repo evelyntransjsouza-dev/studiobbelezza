@@ -1,0 +1,186 @@
+import { StudioSettings, Service, Appointment, PortfolioItem } from '../types';
+
+export const DEFAULT_STUDIO_SETTINGS: StudioSettings = {
+  name: 'Studio B Beleza',
+  instagram: '@studiobbelezza',
+  phone: '(11) 94823-0099',
+  address: 'Rua Mandiúba, 176 - CEP 03158-070, São Paulo - SP',
+  bio: 'Realce sua beleza com exclusividade. Especialistas em loiros perfeitos, cortes sofisticados, botox, tinturas, progressivas e penteados marcantes.',
+  logoUrl: '', // Will use default custom SVG badge if empty
+  workDays: [2, 3, 4, 5, 6], // Terça a Sábado (padrão salões de beleza)
+  openingTime: '09:00',
+  closingTime: '19:00',
+  slotInterval: 60,
+  adminPin: 'beth123',
+};
+
+export const INITIAL_SERVICES: Service[] = [
+  {
+    id: 'srv-loiro',
+    name: 'Loiro dos Sonhos (Mechas & Iluminado)',
+    category: 'Loiro',
+    price: 380,
+    durationMinutes: 240,
+    description: 'Técnica personalizada de mechas, loiro platinado, pérola ou morena iluminada com teste de mecha, proteção dos fios e matização.',
+    imageUrl: 'https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=800&q=80',
+    isPopular: true,
+    isActive: true,
+  },
+  {
+    id: 'srv-corte',
+    name: 'Corte Feminino & Visagismo',
+    category: 'Cortes',
+    price: 90,
+    durationMinutes: 60,
+    description: 'Corte personalizado alinhado ao formato do seu rosto e estilo de vida, finalizado com lavagem especial e escova modeladora.',
+    imageUrl: 'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=80',
+    isPopular: true,
+    isActive: true,
+  },
+  {
+    id: 'srv-botox',
+    name: 'Botox Capilar Repositor de Massa',
+    category: 'Botox',
+    price: 180,
+    durationMinutes: 90,
+    description: 'Tratamento intensivo anti-frizz que repõe a massa capilar perdida, sela as cutículas e devolve o brilho espelhado aos cabelos.',
+    imageUrl: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80',
+    isPopular: true,
+    isActive: true,
+  },
+  {
+    id: 'srv-tintura',
+    name: 'Tintura & Coloração Global',
+    category: 'Tintura',
+    price: 150,
+    durationMinutes: 90,
+    description: 'Coloração completa ou retoque de raiz com produtos de alta tecnologia para máxima cobertura de brancos e luminosidade radiante.',
+    imageUrl: 'https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=800&q=80',
+    isPopular: false,
+    isActive: true,
+  },
+  {
+    id: 'srv-progressiva',
+    name: 'Escova Progressiva Orgânica',
+    category: 'Progressiva',
+    price: 230,
+    durationMinutes: 150,
+    description: 'Alinhamento térmico 100% livre de formol. Cabelos lisos, com movimento natural, sedosidade e toque aveludado duradouro.',
+    imageUrl: 'https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?auto=format&fit=crop&w=800&q=80',
+    isPopular: true,
+    isActive: true,
+  },
+  {
+    id: 'srv-penteado',
+    name: 'Penteado para Festas & Noivas',
+    category: 'Penteado',
+    price: 170,
+    durationMinutes: 90,
+    description: 'Produção impecável para madrinhas, formandas e noivas: coques despojados, semi-presos, tranças e ondas glamourosas.',
+    imageUrl: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80',
+    isPopular: false,
+    isActive: true,
+  },
+  {
+    id: 'srv-morena-iluminada',
+    name: 'Morena Iluminada (Caramelo & Mel)',
+    category: 'Loiro',
+    price: 320,
+    durationMinutes: 180,
+    description: 'Iluminação sutil e elegante preservando o fundo natural escuro, trazendo contraste, brilho e vitalidade aos fios.',
+    imageUrl: 'https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=800&q=80',
+    isPopular: true,
+    isActive: true,
+  },
+  {
+    id: 'srv-hidratacao',
+    name: 'Cronograma Capilar & Nutrição Profunda',
+    category: 'Tratamentos',
+    price: 120,
+    durationMinutes: 60,
+    description: 'Diagnóstico dos fios seguido de máscara ultra-concentrada de aminoácidos, óleos nobres e queratina vegetal.',
+    imageUrl: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=800&q=80',
+    isPopular: false,
+    isActive: true,
+  }
+];
+
+export const INITIAL_PORTFOLIO: PortfolioItem[] = [
+  {
+    id: 'port-1',
+    title: 'Loiro Pérola & Micro-mechas',
+    category: 'Loiro',
+    imageUrl: 'https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=800&q=80',
+    description: 'Transformação completa com técnica micro-mechas e pontas preservadas com brilho.',
+    createdAt: '2026-09-01',
+  },
+  {
+    id: 'port-2',
+    title: 'Corte Long Bob Visagista',
+    category: 'Cortes',
+    imageUrl: 'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=80',
+    description: 'Leveza, camadas suaves e movimento natural para valorizar o rosto.',
+    createdAt: '2026-09-03',
+  },
+  {
+    id: 'port-3',
+    title: 'Botox Capilar Brilho Espelhado',
+    category: 'Botox',
+    imageUrl: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80',
+    description: 'Redução de frizz e selagem de cutículas com toque aveludado.',
+    createdAt: '2026-09-05',
+  },
+  {
+    id: 'port-4',
+    title: 'Morena Iluminada Doce de Leite',
+    category: 'Loiro',
+    imageUrl: 'https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=800&q=80',
+    description: 'Tons quentes com degradê suave e natural.',
+    createdAt: '2026-09-07',
+  },
+  {
+    id: 'port-5',
+    title: 'Liso Impecável Progressiva Orgânica',
+    category: 'Progressiva',
+    imageUrl: 'https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?auto=format&fit=crop&w=800&q=80',
+    description: '100% livre de formol, alinhamento duradouro e movimento leve.',
+    createdAt: '2026-09-08',
+  },
+  {
+    id: 'port-6',
+    title: 'Penteado Semi-Preso Ondulado',
+    category: 'Penteado',
+    imageUrl: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80',
+    description: 'Produção para eventos, madrinhas e celebrações especiais.',
+    createdAt: '2026-09-09',
+  }
+];
+
+export const INITIAL_APPOINTMENTS: Appointment[] = [
+  {
+    id: 'app-1',
+    clientName: 'Camila Ferreira',
+    clientPhone: '(11) 99123-4567',
+    serviceId: 'srv-loiro',
+    serviceName: 'Loiro dos Sonhos (Mechas & Iluminado)',
+    price: 380,
+    date: new Date().toISOString().split('T')[0], // Today
+    time: '10:00',
+    status: 'confirmed',
+    notes: 'Cliente quer tom pérola e pontas claras.',
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: 'app-2',
+    clientName: 'Juliana Mendes',
+    clientPhone: '(11) 98234-5678',
+    serviceId: 'srv-botox',
+    serviceName: 'Botox Capilar Repositor de Massa',
+    price: 180,
+    date: new Date().toISOString().split('T')[0], // Today
+    time: '15:00',
+    status: 'confirmed',
+    notes: 'Cabelos com química prévia.',
+    createdAt: new Date().toISOString(),
+  }
+];
